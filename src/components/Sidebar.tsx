@@ -19,15 +19,12 @@ interface GetLessonsQueryResponse{
         title: string
         slug: string
         availableAt: string
-        lessonsType: 'live'| 'class'
+        lessonType: 'live'| 'class'
     }[]
 }
 
 export function Sidebar(){
-    const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
-
-    console.log(data);
-    
+    const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY);
 
     return (
         <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
@@ -43,7 +40,7 @@ export function Sidebar(){
                         title={lesson.title}
                         slug={lesson.slug}
                         availableAt={new Date(lesson.availableAt)}
-                        type={lesson.lessonsType}
+                        type={lesson.lessonType}
                     />
                     )
                 })}
